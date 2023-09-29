@@ -1,0 +1,85 @@
+/* Estilo para el encabezado de la página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #cac9c9;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    text-decoration: underline;
+    color: dimgrey;
+    margin-top: 40px;
+}
+
+/* Estilo para el botón "AgregarAlumno" */
+#AgregarAlumno {
+    background-color: #d4aac9;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10%;
+    font-size: 16px;
+
+}
+
+/* Estilo para la tabla */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 40px;
+    
+}
+
+table, th, td {
+    border: 1px solid #000000;
+}
+
+th, td {
+    padding: 15px;
+    text-align: start;
+}
+
+/* Estilo para el encabezado de la tabla */
+thead {
+    background-color: #007BFF;
+    color: white;
+    font-size: 20px;
+}
+
+/* Estilo para el formulario de agregar alumno */
+#agregarAlumno {
+    max-width: 40%;
+    margin-left: 20px;
+    color: black;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Estilo para la sección de agregar calificación (puedes personalizarlo según tus necesidades) */
+#agregarCalificacion {
+    margin-top: 20px;
+    /* Agrega tu estilo personalizado aquí */
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mi libro virtual</h1>
+    <button id="AgregarAlumno">AgregarAlumno</button>
+    <div id="listado">
+
+        <table>
+            <thead>
+                <td>#</td>
+                <td>Nombre Alumno</td>
+                <td id="calificaciones">Calificaciones</td>
+                <td>Acciones</td>
+            </thead>
+            <tbody id="tableBody" hidden>
+                <td>
+
+                </td>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="agregarAlumno" hidden>
+        <form id="FormAgregarAlumno">
+            <label for="nombreAlumno">Nombre Alumno</label>
+            <input type="text" id="nombreAlumno" name="nombreAlumno">
+            <button type="submit">Agregar</button>
+        </form>
+
+    </div>
+    <div id="agregarCalificacion"></div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
