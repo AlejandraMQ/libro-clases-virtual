@@ -1,6 +1,6 @@
-/* Estilo para el encabezado de la página */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #cac9c9;
     margin: 0;
     padding: 0;
@@ -9,13 +9,13 @@ body {
 h1{
     text-align: center;
     text-decoration: underline;
-    color: dimgrey;
+    color: rgb(98, 98, 98);
     margin-top: 40px;
 }
 
-/* Estilo para el botón "AgregarAlumno" */
-#AgregarAlumno {
-    background-color: #d4aac9;
+/* boton agregar alumnos */
+#btnAgregarAlumno {
+    background-color: rgb(241, 163, 78);
     color: black;
     border: none;
     padding: 10px 20px;
@@ -24,8 +24,25 @@ h1{
     margin-top: 10px;
     margin-left: 10%;
     font-size: 16px;
+    margin-bottom: 22px;
+    font-weight: 700;
+    
 
 }
+
+.btnAgregarAlumno {
+    background-color:  rgb(241, 163, 78);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 60%;
+    font-size: 16px;
+    font-weight: 700;
+}
+
 
 /* Estilo para la tabla */
 table {
@@ -33,6 +50,7 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     margin-left: 40px;
+    font-size: 20px;
     
 }
 
@@ -57,6 +75,8 @@ thead {
     max-width: 40%;
     margin-left: 20px;
     color: black;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 label {
@@ -65,21 +85,34 @@ label {
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 10px;
 }
 
-button[type="submit"] {
-    background-color: #007BFF;
-    color: #fff;
+.cuadrito {
+    font-size: 25px;
+    margin-left: 100px;
+}
+
+#AgregarCalificacionBtn {
+    background-color: rgb(241, 163, 78);
+    color: black;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 700;
 }
-
-/* Estilo para la sección de agregar calificación (puedes personalizarlo según tus necesidades) */
-#agregarCalificacion {
-    margin-top: 20px;
-    /* Agrega tu estilo personalizado aquí */
+.notaTabla{
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    
 }

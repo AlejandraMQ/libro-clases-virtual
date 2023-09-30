@@ -1,81 +1,110 @@
-const listadoAlumnos = []
+const listadoAlumnos = [];
+let alumno;
 
 class Alumno {
-    id
-    nombre
-    calificaciones
+  id;
+  nombre;
+  calificaciones;
 
-    constructor(nombre){
-        this.nombre = nombre;
-        this.calificaciones = []
-        listadoAlumnos.push(this)
-        this.id = listadoAlumnos.length 
-    }
+  constructor(nombre) {
+    this.nombre = nombre;
+    this.calificaciones = [];
+    listadoAlumnos.push(this);
+    this.id = listadoAlumnos.length;
+  }
 }
 // con esto nos aseguramos que este cargado el html y js
 document.addEventListener("DOMContentLoaded", () => {
-    const listado = document.getElementById("listado")
-    const agregarAlumnoDiv = document.getElementById('agregarAlumno')
-    const formAgregarAlumno = document.getElementById('FormAgregarAlumno');
-    const agregarAlumnoBtn = document.getElementById("AgregarAlumno")
+  const listado = document.getElementById("listado");
+  const body = document.getElementById("tableBody");
+  const agregarAlumnoDiv = document.getElementById("agregarAlumno");
+  const formAgregarAlumno = document.getElementById("formAgregarAlumno");
+  const agregarAlumnoBtn = document.getElementById("btnAgregarAlumno");
+  const agregarCalificacion = document.getElementById("agregarCalificacion");
+  const formAgregarCalificacion = document.getElementById('agregarCalificacionAlumno')
 
-    formAgregarAlumno.addEventListener('submit',(ev) => {
-        ev.preventDefault();
-        const input = document.getElementById("nombreAlumno")
-        const inputName = input.value
-        new Alumno(inputName)
-        actualizarListado();
-        listado.hidden = false;
-        agregarAlumnoDiv.hidden = true;
-        input.value = ""
-    })
 
-    agregarAlumnoBtn.addEventListener("click",() =>{
-        listado.hidden = true;
-        agregarAlumnoDiv.hidden = false;
-        const input = document.getElementById("nombreAlumno")
-        input.focus();
-    } )
-    
+  formAgregarCalificacion.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    const nota = parseInt(ev.target[0].value,10)
+    alumno.calificaciones.push(nota)
+    actualizarListado();
+    listado.hidden = false;
 
-})
+    agregarCalificacion.hidden = true
+    ev.target[0].value = ""
 
-function actualizarListado(){
-    const body = document.getElementById("tableBody");
-    let html=""
-    const calificaciones = obtenerCantidadCalificaciones();
-    const colsCalificaciones = document.getElementById("calificaciones")
-    colsCalificaciones.setAttribute("colspan",calificaciones)
-    for (let i = 0; i < listadoAlumnos.length; i++) {
-        const alumno = listadoAlumnos[i];
-        html += `<tr><td>${alumno.id}</td><td>${alumno.nombre}</td>`
-        const arr = new Array(calificaciones).fill("");
-        for(let j = 0; j < alumno.calificaciones.length;j++){
-            arr[j] = alumno.calificaciones[j]
-        }
-        html+=arr.map(row => {
-            return `<td>${row}</td>`
-        }).join("")
-        console.log(arr,calificaciones)
-        html+=`<td><button value="${alumno.id}" name="AgregarCalificaciones">Agregar Nota</button></td><tr>`        
+  })
+  formAgregarAlumno.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    const input = document.getElementById("nombreAlumno");
+    const inputName = input.value;
+    new Alumno(inputName);
+    actualizarListado();
+    listado.hidden = false;
+    agregarAlumnoDiv.hidden = true;
+    input.value = "";
+  });
+
+  agregarAlumnoBtn.addEventListener("click", () => {
+    listado.hidden = true;
+    agregarAlumnoDiv.hidden = false;
+    const input = document.getElementById("nombreAlumno");
+    input.focus();
+  });
+
+  body.addEventListener("click", (ev) => {
+    const target = ev.target;
+    if (target.tagName.toLowerCase() === "button") {
+      if (target.name === "AgregarCalificaciones") {
+        const idAlumno = parseInt(target.value);
+        AgregarCalificacion(idAlumno);
+      }
     }
-    body.hidden=false
-    body.innerHTML = html;
-}
+  });
 
-function obtenerCantidadCalificaciones(){
+  function actualizarListado() {
+    let html = "";
+    const calificaciones = obtenerCantidadCalificaciones();
+    const colsCalificaciones = document.getElementById("calificaciones");
+    colsCalificaciones.setAttribute("colspan", calificaciones);
+    for (let i = 0; i < listadoAlumnos.length; i++) {
+      const alumno = listadoAlumnos[i];
+      html += `<tr><td>${alumno.id}</td><td>${alumno.nombre}</td>`;
+      const arr = new Array(calificaciones).fill("");
+      for (let j = 0; j < alumno.calificaciones.length; j++) {
+        arr[j] = alumno.calificaciones[j];
+      }
+      html += arr
+        .map((row) => {
+          return `<td>${row}</td>`;
+        })
+        .join("");
+      html += `<td><button value="${alumno.id}" class="notaTabla" name="AgregarCalificaciones">Agregar Nota</button></td><tr>`;
+    }
+    body.hidden = false;
+    body.innerHTML = html;
+  }
+
+  function obtenerCantidadCalificaciones() {
     let cantidad = -Infinity;
     for (let i = 0; i < listadoAlumnos.length; i++) {
-        const alumno = listadoAlumnos[i];
-        if (cantidad < alumno.calificaciones.length){
-            cantidad = alumno.calificaciones.length
-        }        
+      const alumno = listadoAlumnos[i];
+      if (cantidad < alumno.calificaciones.length) {
+        cantidad = alumno.calificaciones.length;
+      }
     }
-    if( cantidad === 0) {
-        return 1
+    if (cantidad === 0) {
+      return 1;
     }
-    return  cantidad ;
-}
+    return cantidad;
+  }
+  
 
-
-
+  function AgregarCalificacion(idAlumno) {
+      alumno = listadoAlumnos.find((alumno) => alumno.id === idAlumno);
+      agregarCalificacion.hidden = false;
+      listado.hidden = true;
+      document.getElementById("nota").focus()
+  }
+});
