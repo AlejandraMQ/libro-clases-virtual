@@ -71,16 +71,23 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < listadoAlumnos.length; i++) {
       const alumno = listadoAlumnos[i];
       html += `<tr><td>${alumno.id}</td><td>${alumno.nombre}</td>`;
-      const arr = new Array(calificaciones).fill("");
-      for (let j = 0; j < alumno.calificaciones.length; j++) {
-        arr[j] = alumno.calificaciones[j];
+      const arr = [];
+      alumno.calificaciones.forEach(calificacion => {
+        arr.push(calificacion)
+      })
+      if (arr.length === 0) {
+        arr.push("")
       }
       html += arr
         .map((row) => {
           return `<td>${row}</td>`;
         })
         .join("");
-      html += `<td><button value="${alumno.id}" class="notaTabla" name="AgregarCalificaciones">Agregar Nota</button></td><tr>`;
+      let suma = 0; 
+      arr.forEach(calificacion => suma += calificacion)
+      const promedio = suma/arr.length
+      console.log(promedio)
+      html += `<td>${promedio === 0?"":Math.round(promedio)}</td><td><button value="${alumno.id}" class="notaTabla" name="AgregarCalificaciones">Agregar Nota</button></td><tr>`;
     }
     body.hidden = false;
     body.innerHTML = html;
